@@ -21,7 +21,21 @@ namespace SimpleBank
         private void button1_Click(object sender, EventArgs e)
         {
             warningLabel.Text = "";
-            if (AllInputsAreValid()) { };
+            if (AllInputsAreValid()) 
+            {
+                CreateCustomer();
+                CreateAccount(); 
+            };
+        }
+
+        private void CreateCustomer()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void CreateAccount()
+        {
+            throw new NotImplementedException();
         }
 
         internal bool AllInputsAreValid()
