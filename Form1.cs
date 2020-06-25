@@ -24,7 +24,7 @@ namespace SimpleBank
             if (AllInputsAreValid()) 
             {
                 Customer customer1 = CreateCustomer();
-                LockControls(new List<TextBox>
+                LockAccountCreationControls(new List<TextBox>
                 {
                     firstNameTextBox,
                     lastNameTextBox,
@@ -32,9 +32,17 @@ namespace SimpleBank
                     accountNumberTextBox,
                     initialBalanceTextBox 
                 });
+                EnableDepositAndWithDrawControls();
+
             };
         }
-        private void LockControls(List<TextBox> textBoxes)
+
+        private void EnableDepositAndWithDrawControls()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void LockAccountCreationControls(List<TextBox> textBoxes)
         {
             textBoxes.ForEach(textBox => textBox.ReadOnly = true);
             createAccountButton.Enabled = false;
