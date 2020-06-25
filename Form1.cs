@@ -23,8 +23,21 @@ namespace SimpleBank
             warningLabel.Text = "";
             if (AllInputsAreValid()) 
             {
-                CreateCustomer();
+                Customer customer1 = CreateCustomer();
+                LockControls(new List<TextBox>
+                {
+                    firstNameTextBox,
+                    lastNameTextBox,
+                    accountNameTextBox,
+                    accountNumberTextBox,
+                    initialBalanceTextBox 
+                });
             };
+        }
+        private void LockControls(List<TextBox> textBoxes)
+        {
+            textBoxes.ForEach(textBox => textBox.ReadOnly = true);
+            createAccountButton.Enabled = false;
         }
 
         private Customer CreateCustomer()
