@@ -27,9 +27,16 @@ namespace SimpleBank
             };
         }
 
-        private void CreateCustomer()
+        private Customer CreateCustomer()
         {
-            throw new NotImplementedException();
+            return new Customer
+            {
+                FirstName = firstNameTextBox.Text,
+                LastName = lastNameTextBox.Text,
+                AccountName = accountNameTextBox.Text,
+                AccountNumber = int.Parse(accountNumberTextBox.Text),
+                AccountBalance = decimal.Parse(initialBalanceTextBox.Text)
+            };
         }
 
         internal bool AllInputsAreValid()
@@ -37,8 +44,8 @@ namespace SimpleBank
             return FieldIsFilled(firstNameTextBox, "First name") &&
             FieldIsFilled(lastNameTextBox, "Last name") &&
             FieldIsFilled(accountNameTextBox, "Account name") &&
-            InputIsNumeric(accountNumberTextBox, "Account number") &&
-            InputIsNumeric(initialBalanceTextBox, "Initial balance"); 
+            InputIsNumeric(accountNumberTextBox, "Account number", "integer") &&
+            InputIsNumeric(initialBalanceTextBox, "Initial balance", "decimal"); 
             }
         internal bool FieldIsFilled(TextBox textBox, string warningMessageSubject)
         {
@@ -47,14 +54,14 @@ namespace SimpleBank
             {
                 warningLabel.Text = $"{warningMessageSubject} is required";
             }
-            return isNullOrWhiteSpace;
+            return !isNullOrWhiteSpace;
         }
-        internal bool InputIsNumeric(TextBox textBox, string warningMessageSubject) 
+        internal bool InputIsNumeric(TextBox textBox, string warningMessageSubject, string desiredNumericType) 
         {
             bool isDecimal = decimal.TryParse(textBox.Text, out _);
             if (!isDecimal)
             {
-                warningLabel.Text = $"{warningMessageSubject} must be a decimal";
+                warningLabel.Text = $"{warningMessageSubject} must be a {desiredNumericType}";
             }
             return isDecimal;
         }

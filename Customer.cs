@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SimpleBank
 {
-    class Customer
+    internal class Customer
     {
-        string FirstName { get; set; }
-        string LastName { get; set; }
-        string AccountName { get; set; }
-        int AccountNumber { get; set; }
-        decimal AccountBalance { get; set; }
+        internal string FirstName { get; set; }
+        internal string LastName { get; set; }
+        internal string AccountName { get; set; }
+        internal int AccountNumber { get; set; }
+        internal decimal AccountBalance { get; set; }
     }
 }
