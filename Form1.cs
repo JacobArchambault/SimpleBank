@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,55 +20,35 @@ namespace SimpleBank
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PerformValidation();
+            warningLabel.Text = "";
+            if (AllInputsAreValid()) { };
         }
 
-        internal void PerformValidation()
+        internal bool AllInputsAreValid()
         {
-            RequireFullName();
-            EnsureInputIsNumeric(accountNumberTextBox, "Account number");
-            EnsureInputIsNumeric(initialBalanceTextBox, "Initial balance");
-            CheckForEmptyTextBoxes();
+            return FieldIsFilled(firstNameTextBox, "First name") &&
+            FieldIsFilled(lastNameTextBox, "Last name") &&
+            FieldIsFilled(accountNameTextBox, "Account name") &&
+            InputIsNumeric(accountNumberTextBox, "Account number") &&
+            InputIsNumeric(initialBalanceTextBox, "Initial balance"); 
+            }
+        internal bool FieldIsFilled(TextBox textBox, string warningMessageSubject)
+        {
+            bool isNullOrWhiteSpace = string.IsNullOrWhiteSpace(textBox.Text);
+            if (isNullOrWhiteSpace)
+            {
+                warningLabel.Text = $"{warningMessageSubject} is required";
+            }
+            return isNullOrWhiteSpace;
         }
-        internal void CheckForEmptyTextBoxes()
+        internal bool InputIsNumeric(TextBox textBox, string warningMessageSubject) 
         {
-            // check for empty textboxes.
-            IEnumerable<TextBox> textBoxes = Controls.OfType<TextBox>();
-            foreach (TextBox t in textBoxes)
+            bool isDecimal = decimal.TryParse(textBox.Text, out _);
+            if (!isDecimal)
             {
-                if (string.IsNullOrWhiteSpace(t.Text))
-                {
-                    warningLabel.Text = "All fields must be filled out";
-                }
+                warningLabel.Text = $"{warningMessageSubject} must be a decimal";
             }
-
-        }
-        internal void RequireFullName()
-        {
-            if (string.IsNullOrWhiteSpace(firstNameTextBox.Text))
-            {
-                warningLabel.Text = "First name is required";
-            }
-            else if (string.IsNullOrWhiteSpace(lastNameTextBox.Text))
-            {
-                warningLabel.Text = "Last name is required";
-            }
-            else
-            {
-                warningLabel.Text = "";
-            }
-            
-        }
-        internal void EnsureInputIsNumeric(TextBox textBox, string warningStringSubject) 
-        {
-            try
-            {
-                decimal.Parse(textBox.Text);
-            }
-            catch
-            {
-                warningLabel.Text = $"{warningStringSubject} must be a decimal";
-            }
+            return isDecimal;
         }
 
     }
