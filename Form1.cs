@@ -39,15 +39,15 @@ namespace SimpleBank
             };
         }
 
-        internal bool AllInputsAreValid()
+        private bool AllInputsAreValid()
         {
             return FieldIsFilled(firstNameTextBox, "First name") &&
             FieldIsFilled(lastNameTextBox, "Last name") &&
             FieldIsFilled(accountNameTextBox, "Account name") &&
-            InputIsNumeric(accountNumberTextBox, "Account number", "integer") &&
-            InputIsNumeric(initialBalanceTextBox, "Initial balance", "decimal"); 
-            }
-        internal bool FieldIsFilled(TextBox textBox, string warningMessageSubject)
+            InputIsNumeric(accountNumberTextBox, "Account number", "whole number") &&
+            InputIsNumeric(initialBalanceTextBox, "Initial balance", "decimal");
+        }
+        private bool FieldIsFilled(TextBox textBox, string warningMessageSubject)
         {
             bool isNullOrWhiteSpace = string.IsNullOrWhiteSpace(textBox.Text);
             if (isNullOrWhiteSpace)
@@ -56,15 +56,14 @@ namespace SimpleBank
             }
             return !isNullOrWhiteSpace;
         }
-        internal bool InputIsNumeric(TextBox textBox, string warningMessageSubject, string desiredNumericType) 
+        private bool InputIsNumeric(TextBox textBox, string warningMessageSubject, string desiredNumericType) 
         {
-            bool isDecimal = decimal.TryParse(textBox.Text, out _);
-            if (!isDecimal)
+            bool isDesiredNumericType = decimal.TryParse(textBox.Text, out _);
+            if (!isDesiredNumericType)
             {
                 warningLabel.Text = $"{warningMessageSubject} must be a {desiredNumericType}";
             }
-            return isDecimal;
+            return isDesiredNumericType;
         }
-
     }
 }

@@ -13,5 +13,13 @@ namespace SimpleBank
         internal string AccountName { get; set; }
         internal int AccountNumber { get; set; }
         internal decimal AccountBalance { get; set; }
+        internal void Deposit(decimal amount)
+        {
+            AccountBalance += amount;
+        }
+        internal void Withdraw(decimal amount)
+        {
+            AccountBalance -= amount;
+        }
     }
 }
