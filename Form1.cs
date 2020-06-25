@@ -24,16 +24,10 @@ namespace SimpleBank
             if (AllInputsAreValid()) 
             {
                 CreateCustomer();
-                CreateAccount(); 
             };
         }
 
         private void CreateCustomer()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void CreateAccount()
         {
             throw new NotImplementedException();
         }
