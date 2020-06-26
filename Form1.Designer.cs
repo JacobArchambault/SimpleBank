@@ -46,8 +46,8 @@
             this.withdrawTextBox = new System.Windows.Forms.TextBox();
             this.currentBalanceLabel = new System.Windows.Forms.Label();
             this.currentBalanceTextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.depositButton = new System.Windows.Forms.Button();
+            this.withdrawalButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // accountNameLabel
@@ -204,35 +204,35 @@
             this.currentBalanceTextBox.Size = new System.Drawing.Size(100, 26);
             this.currentBalanceTextBox.TabIndex = 19;
             // 
-            // button1
+            // depositButton
             // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(347, 155);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(170, 34);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Make a deposit";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
+            this.depositButton.Enabled = false;
+            this.depositButton.Location = new System.Drawing.Point(347, 157);
+            this.depositButton.Name = "depositButton";
+            this.depositButton.Size = new System.Drawing.Size(170, 31);
+            this.depositButton.TabIndex = 20;
+            this.depositButton.Text = "Make a deposit";
+            this.depositButton.UseVisualStyleBackColor = true;
+            this.depositButton.Visible = false;
             // 
-            // button2
+            // withdrawalButton
             // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(347, 191);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(170, 33);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Make a withdrawal";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
+            this.withdrawalButton.Enabled = false;
+            this.withdrawalButton.Location = new System.Drawing.Point(347, 209);
+            this.withdrawalButton.Name = "withdrawalButton";
+            this.withdrawalButton.Size = new System.Drawing.Size(170, 34);
+            this.withdrawalButton.TabIndex = 21;
+            this.withdrawalButton.Text = "Make a withdrawal";
+            this.withdrawalButton.UseVisualStyleBackColor = true;
+            this.withdrawalButton.Visible = false;
             // 
             // bankForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.withdrawalButton);
+            this.Controls.Add(this.depositButton);
             this.Controls.Add(this.currentBalanceTextBox);
             this.Controls.Add(this.currentBalanceLabel);
             this.Controls.Add(this.withdrawTextBox);
@@ -278,8 +278,8 @@
         private System.Windows.Forms.TextBox withdrawTextBox;
         private System.Windows.Forms.Label currentBalanceLabel;
         private System.Windows.Forms.TextBox currentBalanceTextBox;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button depositButton;
+        private System.Windows.Forms.Button withdrawalButton;
     }
 }
 

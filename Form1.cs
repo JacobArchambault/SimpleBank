@@ -13,17 +13,22 @@ namespace SimpleBank
 {
     public partial class bankForm : Form
     {
+        #region Global fields
+        private Customer _customer;
+        #endregion
+        #region Constructor
         public bankForm()
         {
             InitializeComponent();
         }
-
+        #endregion
+        #region Event handlers
         private void button1_Click(object sender, EventArgs e)
         {
             warningLabel.Text = "";
             if (AllInputsAreValid()) 
             {
-                Customer customer1 = CreateCustomer();
+                _customer = CreateCustomer();
                 LockAccountCreationControls(new List<TextBox>
                 {
                     firstNameTextBox,
@@ -36,7 +41,12 @@ namespace SimpleBank
 
             };
         }
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+        }
+        #endregion
 
+        #region Helper methods
         private void EnableDepositAndWithDrawControls()
         {
             throw new NotImplementedException();
@@ -86,5 +96,7 @@ namespace SimpleBank
             }
             return isDesiredNumericType;
         }
+        #endregion
+
     }
 }
