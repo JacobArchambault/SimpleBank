@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -16,12 +17,14 @@ namespace SimpleBank
         #region Global fields
         private Customer _customer;
         #endregion
+
         #region Constructor
         public bankForm()
         {
             InitializeComponent();
         }
         #endregion
+
         #region Event handlers
         private void button1_Click(object sender, EventArgs e)
         {
@@ -38,7 +41,7 @@ namespace SimpleBank
                     initialBalanceTextBox 
                 });
                 EnableAndShowControls(new List<Control> { depositLabel, depositTextBox, depositButton, withdrawLabel, withdrawTextBox, withdrawalButton, currentBalanceLabel});
-                balanceAmountLabel.Text = _customer.AccountBalance.ToString();
+                balanceAmountLabel.Text = _customer.AccountBalance.ToString("C", CultureInfo.CurrentCulture);
                 balanceAmountLabel.Visible = true;
             };
         }
@@ -99,13 +102,13 @@ namespace SimpleBank
         private void depositButton_Click(object sender, EventArgs e)
         {
             _customer.Deposit(decimal.Parse(depositTextBox.Text));
-            balanceAmountLabel.Text = _customer.AccountBalance.ToString();
+            balanceAmountLabel.Text = _customer.AccountBalance.ToString("C", CultureInfo.CurrentCulture);
         }
 
         private void withdrawalButton_Click(object sender, EventArgs e)
         {
             _customer.Withdraw(decimal.Parse(withdrawTextBox.Text));
-            balanceAmountLabel.Text = _customer.AccountBalance.ToString();
+            balanceAmountLabel.Text = _customer.AccountBalance.ToString("C", CultureInfo.CurrentCulture);
         }
     }
 }
