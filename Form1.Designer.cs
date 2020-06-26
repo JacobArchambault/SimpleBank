@@ -199,10 +199,12 @@
             // 
             // currentBalanceTextBox
             // 
+            this.currentBalanceTextBox.Enabled = false;
             this.currentBalanceTextBox.Location = new System.Drawing.Point(173, 220);
             this.currentBalanceTextBox.Name = "currentBalanceTextBox";
             this.currentBalanceTextBox.Size = new System.Drawing.Size(100, 26);
             this.currentBalanceTextBox.TabIndex = 19;
+            this.currentBalanceTextBox.Visible = false;
             // 
             // depositButton
             // 
@@ -214,6 +216,7 @@
             this.depositButton.Text = "Make a deposit";
             this.depositButton.UseVisualStyleBackColor = true;
             this.depositButton.Visible = false;
+            this.depositButton.Click += new System.EventHandler(this.depositButton_Click);
             // 
             // withdrawalButton
             // 
@@ -225,6 +228,7 @@
             this.withdrawalButton.Text = "Make a withdrawal";
             this.withdrawalButton.UseVisualStyleBackColor = true;
             this.withdrawalButton.Visible = false;
+            this.withdrawalButton.Click += new System.EventHandler(this.withdrawalButton_Click);
             // 
             // bankForm
             // 

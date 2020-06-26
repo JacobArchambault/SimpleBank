@@ -37,19 +37,16 @@ namespace SimpleBank
                     accountNumberTextBox,
                     initialBalanceTextBox 
                 });
-                EnableDepositAndWithDrawControls();
-
+                EnableAndShowControls(new List<Control> { depositLabel, depositTextBox, depositButton, withdrawLabel, withdrawTextBox, withdrawalButton, currentBalanceLabel});
+                currentBalanceTextBox.Visible = true;
             };
-        }
-        private void button1_Click_1(object sender, EventArgs e)
-        {
         }
         #endregion
 
         #region Helper methods
-        private void EnableDepositAndWithDrawControls()
+        private void EnableAndShowControls(List<Control> controls)
         {
-            throw new NotImplementedException();
+            controls.ForEach(c => {c.Enabled = true; c.Visible = true; });
         }
 
         private void LockAccountCreationControls(List<TextBox> textBoxes)
@@ -98,5 +95,16 @@ namespace SimpleBank
         }
         #endregion
 
+        private void depositButton_Click(object sender, EventArgs e)
+        {
+            _customer.Deposit(decimal.Parse(depositTextBox.Text));
+            currentBalanceTextBox.Text = _customer.AccountBalance.ToString();
+        }
+
+        private void withdrawalButton_Click(object sender, EventArgs e)
+        {
+            _customer.Withdraw(decimal.Parse(withdrawTextBox.Text));
+            currentBalanceTextBox.Text = _customer.AccountBalance.ToString();
+        }
     }
 }
