@@ -38,7 +38,8 @@ namespace SimpleBank
                     initialBalanceTextBox 
                 });
                 EnableAndShowControls(new List<Control> { depositLabel, depositTextBox, depositButton, withdrawLabel, withdrawTextBox, withdrawalButton, currentBalanceLabel});
-                currentBalanceTextBox.Visible = true;
+                balanceAmountLabel.Text = _customer.AccountBalance.ToString();
+                balanceAmountLabel.Visible = true;
             };
         }
         #endregion
@@ -98,13 +99,13 @@ namespace SimpleBank
         private void depositButton_Click(object sender, EventArgs e)
         {
             _customer.Deposit(decimal.Parse(depositTextBox.Text));
-            currentBalanceTextBox.Text = _customer.AccountBalance.ToString();
+            balanceAmountLabel.Text = _customer.AccountBalance.ToString();
         }
 
         private void withdrawalButton_Click(object sender, EventArgs e)
         {
             _customer.Withdraw(decimal.Parse(withdrawTextBox.Text));
-            currentBalanceTextBox.Text = _customer.AccountBalance.ToString();
+            balanceAmountLabel.Text = _customer.AccountBalance.ToString();
         }
     }
 }

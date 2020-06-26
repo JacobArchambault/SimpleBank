@@ -45,9 +45,9 @@
             this.depositTextBox = new System.Windows.Forms.TextBox();
             this.withdrawTextBox = new System.Windows.Forms.TextBox();
             this.currentBalanceLabel = new System.Windows.Forms.Label();
-            this.currentBalanceTextBox = new System.Windows.Forms.TextBox();
             this.depositButton = new System.Windows.Forms.Button();
             this.withdrawalButton = new System.Windows.Forms.Button();
+            this.balanceAmountLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // accountNameLabel
@@ -162,7 +162,7 @@
             // withdrawLabel
             // 
             this.withdrawLabel.AutoSize = true;
-            this.withdrawLabel.Location = new System.Drawing.Point(18, 191);
+            this.withdrawLabel.Location = new System.Drawing.Point(18, 216);
             this.withdrawLabel.Name = "withdrawLabel";
             this.withdrawLabel.Size = new System.Drawing.Size(149, 20);
             this.withdrawLabel.TabIndex = 15;
@@ -181,7 +181,7 @@
             // withdrawTextBox
             // 
             this.withdrawTextBox.Enabled = false;
-            this.withdrawTextBox.Location = new System.Drawing.Point(173, 188);
+            this.withdrawTextBox.Location = new System.Drawing.Point(173, 213);
             this.withdrawTextBox.Name = "withdrawTextBox";
             this.withdrawTextBox.Size = new System.Drawing.Size(100, 26);
             this.withdrawTextBox.TabIndex = 17;
@@ -190,21 +190,12 @@
             // currentBalanceLabel
             // 
             this.currentBalanceLabel.AutoSize = true;
-            this.currentBalanceLabel.Location = new System.Drawing.Point(18, 223);
+            this.currentBalanceLabel.Location = new System.Drawing.Point(18, 290);
             this.currentBalanceLabel.Name = "currentBalanceLabel";
             this.currentBalanceLabel.Size = new System.Drawing.Size(126, 20);
             this.currentBalanceLabel.TabIndex = 18;
             this.currentBalanceLabel.Text = "Current balance:";
             this.currentBalanceLabel.Visible = false;
-            // 
-            // currentBalanceTextBox
-            // 
-            this.currentBalanceTextBox.Enabled = false;
-            this.currentBalanceTextBox.Location = new System.Drawing.Point(173, 220);
-            this.currentBalanceTextBox.Name = "currentBalanceTextBox";
-            this.currentBalanceTextBox.Size = new System.Drawing.Size(100, 26);
-            this.currentBalanceTextBox.TabIndex = 19;
-            this.currentBalanceTextBox.Visible = false;
             // 
             // depositButton
             // 
@@ -230,14 +221,24 @@
             this.withdrawalButton.Visible = false;
             this.withdrawalButton.Click += new System.EventHandler(this.withdrawalButton_Click);
             // 
+            // balanceAmountLabel
+            // 
+            this.balanceAmountLabel.AutoSize = true;
+            this.balanceAmountLabel.Location = new System.Drawing.Point(273, 290);
+            this.balanceAmountLabel.Name = "balanceAmountLabel";
+            this.balanceAmountLabel.Size = new System.Drawing.Size(0, 20);
+            this.balanceAmountLabel.TabIndex = 22;
+            this.balanceAmountLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.balanceAmountLabel.Visible = false;
+            // 
             // bankForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.balanceAmountLabel);
             this.Controls.Add(this.withdrawalButton);
             this.Controls.Add(this.depositButton);
-            this.Controls.Add(this.currentBalanceTextBox);
             this.Controls.Add(this.currentBalanceLabel);
             this.Controls.Add(this.withdrawTextBox);
             this.Controls.Add(this.depositTextBox);
@@ -281,9 +282,9 @@
         private System.Windows.Forms.TextBox depositTextBox;
         private System.Windows.Forms.TextBox withdrawTextBox;
         private System.Windows.Forms.Label currentBalanceLabel;
-        private System.Windows.Forms.TextBox currentBalanceTextBox;
         private System.Windows.Forms.Button depositButton;
         private System.Windows.Forms.Button withdrawalButton;
+        private System.Windows.Forms.Label balanceAmountLabel;
     }
 }
 
