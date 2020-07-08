@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace SimpleBank
 {
-    public partial class bankForm : Form
+    public partial class BankForm : Form
     {
         #region Global fields
         private Customer _customer;
         #endregion
 
         #region Constructor
-        public bankForm()
+        public BankForm()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace SimpleBank
 
         #region Event handlers
         // If all textbox inputs are valid, then on clicking the 'Create Account' button, this method:
-        private void button1_Click(object sender, EventArgs e)
+        private void CreateAccountButton_Click(object sender, EventArgs e)
         {
             warningLabel.Text = "";
             if (AllInputsAreValid()) 
@@ -44,27 +44,52 @@ namespace SimpleBank
                     initialBalanceTextBox 
                 });
                 // enables and shows the controls associated with depositing and withdrawing funds;
-                EnableAndShowControls(new List<Control> { depositLabel, depositTextBox, depositButton, withdrawLabel, withdrawTextBox, withdrawalButton, currentBalanceLabel});
+                EnableAndShowControls(new List<Control> { depositLabel, depositTextBox, depositButton, withdrawLabel, withdrawTextBox, withdrawalButton, currentBalanceLabel, resetButton});
                 // assigns the decimal stored in the customer's AccountBalance property to the balance amount label's text, displaying it as a currency,
                 balanceAmountLabel.Text = _customer.AccountBalance.ToString("C", CultureInfo.CurrentCulture);
                 // and makes the balance amount label object visible.
                 balanceAmountLabel.Visible = true;
             };
         }
-        private void depositButton_Click(object sender, EventArgs e)
+        private void DepositButton_Click(object sender, EventArgs e)
         {
             // On clicking the deposit buton, deposit the amount from the deposit text box into the customer's balance...
-            _customer.Deposit(decimal.Parse(depositTextBox.Text));
-            // And display that balance on the balance amount label as a string
-            balanceAmountLabel.Text = _customer.AccountBalance.ToString("C", CultureInfo.CurrentCulture);
+            if (decimal.TryParse(depositTextBox.Text, out decimal depositAmount))
+            {
+                _customer.Deposit(depositAmount);
+                // ...and display that balance on the balance amount label as a string
+                balanceAmountLabel.Text = _customer.AccountBalance.ToString("C", CultureInfo.CurrentCulture);
+                // ... and reset the warning label text to an empty string.
+                warningLabel.Text = "";
+            }
+            else
+            {
+                warningLabel.Text = "Deposit amount must be a decimal";
+            }
         }
 
-        private void withdrawalButton_Click(object sender, EventArgs e)
+        private void WithdrawalButton_Click(object sender, EventArgs e)
         {
-            // On clicking the withdraw buton, withdraw the amount from the withdraw text box from the customer's balance...
-            _customer.Withdraw(decimal.Parse(withdrawTextBox.Text));
-            // and display the new account balance
-            balanceAmountLabel.Text = _customer.AccountBalance.ToString("C", CultureInfo.CurrentCulture);
+            // On clicking the deposit buton, deposit the amount from the deposit text box into the customer's balance...
+            if (decimal.TryParse(withdrawTextBox.Text, out decimal withdrawAmount))
+            {
+                _customer.Deposit(withdrawAmount);
+                // ...and display that balance on the balance amount label as a string
+                balanceAmountLabel.Text = _customer.AccountBalance.ToString("C", CultureInfo.CurrentCulture);
+                // ... and reset the warning label text to an empty string.
+                warningLabel.Text = "";
+            }
+            else
+            {
+                warningLabel.Text = "Withdrawal amount must be a decimal";
+            }
+        }
+        // reset the values in the deposit and withdraw fields.
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            depositTextBox.Text = "0";
+            withdrawTextBox.Text = "0";
+            warningLabel.Text = "";
         }
         #endregion
 

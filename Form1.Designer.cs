@@ -1,6 +1,6 @@
 ﻿namespace SimpleBank
 {
-    partial class bankForm
+    partial class BankForm
     {
         /// <summary>
         /// Required designer variable.
@@ -48,6 +48,7 @@
             this.depositButton = new System.Windows.Forms.Button();
             this.withdrawalButton = new System.Windows.Forms.Button();
             this.balanceAmountLabel = new System.Windows.Forms.Label();
+            this.resetButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // accountNameLabel
@@ -134,11 +135,11 @@
             // 
             this.createAccountButton.Location = new System.Drawing.Point(347, 117);
             this.createAccountButton.Name = "createAccountButton";
-            this.createAccountButton.Size = new System.Drawing.Size(170, 32);
+            this.createAccountButton.Size = new System.Drawing.Size(170, 34);
             this.createAccountButton.TabIndex = 12;
             this.createAccountButton.Text = "Create account";
             this.createAccountButton.UseVisualStyleBackColor = true;
-            this.createAccountButton.Click += new System.EventHandler(this.button1_Click);
+            this.createAccountButton.Click += new System.EventHandler(this.CreateAccountButton_Click);
             // 
             // warningLabel
             // 
@@ -202,12 +203,12 @@
             this.depositButton.Enabled = false;
             this.depositButton.Location = new System.Drawing.Point(347, 157);
             this.depositButton.Name = "depositButton";
-            this.depositButton.Size = new System.Drawing.Size(170, 31);
+            this.depositButton.Size = new System.Drawing.Size(170, 34);
             this.depositButton.TabIndex = 20;
             this.depositButton.Text = "Make a deposit";
             this.depositButton.UseVisualStyleBackColor = true;
             this.depositButton.Visible = false;
-            this.depositButton.Click += new System.EventHandler(this.depositButton_Click);
+            this.depositButton.Click += new System.EventHandler(this.DepositButton_Click);
             // 
             // withdrawalButton
             // 
@@ -219,23 +220,35 @@
             this.withdrawalButton.Text = "Make a withdrawal";
             this.withdrawalButton.UseVisualStyleBackColor = true;
             this.withdrawalButton.Visible = false;
-            this.withdrawalButton.Click += new System.EventHandler(this.withdrawalButton_Click);
+            this.withdrawalButton.Click += new System.EventHandler(this.WithdrawalButton_Click);
             // 
             // balanceAmountLabel
             // 
-            this.balanceAmountLabel.AutoSize = true;
-            this.balanceAmountLabel.Location = new System.Drawing.Point(273, 290);
+            this.balanceAmountLabel.Location = new System.Drawing.Point(173, 290);
             this.balanceAmountLabel.Name = "balanceAmountLabel";
-            this.balanceAmountLabel.Size = new System.Drawing.Size(0, 20);
+            this.balanceAmountLabel.Size = new System.Drawing.Size(100, 26);
             this.balanceAmountLabel.TabIndex = 22;
-            this.balanceAmountLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.balanceAmountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.balanceAmountLabel.Visible = false;
             // 
-            // bankForm
+            // resetButton
+            // 
+            this.resetButton.Enabled = false;
+            this.resetButton.Location = new System.Drawing.Point(347, 289);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(170, 34);
+            this.resetButton.TabIndex = 23;
+            this.resetButton.Text = "Clear fields";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Visible = false;
+            this.resetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
+            // BankForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.resetButton);
             this.Controls.Add(this.balanceAmountLabel);
             this.Controls.Add(this.withdrawalButton);
             this.Controls.Add(this.depositButton);
@@ -256,7 +269,7 @@
             this.Controls.Add(this.initialBalanceLabel);
             this.Controls.Add(this.accountNumberLabel);
             this.Controls.Add(this.accountNameLabel);
-            this.Name = "bankForm";
+            this.Name = "BankForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -285,6 +298,7 @@
         private System.Windows.Forms.Button depositButton;
         private System.Windows.Forms.Button withdrawalButton;
         private System.Windows.Forms.Label balanceAmountLabel;
+        private System.Windows.Forms.Button resetButton;
     }
 }
 

@@ -16,7 +16,7 @@ namespace SimpleBank
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new bankForm());
+            Application.Run(new BankForm());
         }
     }
 }
