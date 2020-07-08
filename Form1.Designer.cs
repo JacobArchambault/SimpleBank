@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.accountNameLabel = new System.Windows.Forms.Label();
             this.accountNumberLabel = new System.Windows.Forms.Label();
             this.initialBalanceLabel = new System.Windows.Forms.Label();
             this.firstNameLabel = new System.Windows.Forms.Label();
             this.lastNameLabel = new System.Windows.Forms.Label();
-            this.accountNameTextBox = new System.Windows.Forms.TextBox();
             this.accountNumberTextBox = new System.Windows.Forms.TextBox();
             this.initialBalanceTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
@@ -51,19 +49,10 @@
             this.resetButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // accountNameLabel
-            // 
-            this.accountNameLabel.AutoSize = true;
-            this.accountNameLabel.Location = new System.Drawing.Point(15, 44);
-            this.accountNameLabel.Name = "accountNameLabel";
-            this.accountNameLabel.Size = new System.Drawing.Size(116, 20);
-            this.accountNameLabel.TabIndex = 0;
-            this.accountNameLabel.Text = "Account name:";
-            // 
             // accountNumberLabel
             // 
             this.accountNumberLabel.AutoSize = true;
-            this.accountNumberLabel.Location = new System.Drawing.Point(240, 47);
+            this.accountNumberLabel.Location = new System.Drawing.Point(18, 47);
             this.accountNumberLabel.Name = "accountNumberLabel";
             this.accountNumberLabel.Size = new System.Drawing.Size(130, 20);
             this.accountNumberLabel.TabIndex = 1;
@@ -72,7 +61,7 @@
             // initialBalanceLabel
             // 
             this.initialBalanceLabel.AutoSize = true;
-            this.initialBalanceLabel.Location = new System.Drawing.Point(18, 79);
+            this.initialBalanceLabel.Location = new System.Drawing.Point(260, 47);
             this.initialBalanceLabel.Name = "initialBalanceLabel";
             this.initialBalanceLabel.Size = new System.Drawing.Size(110, 20);
             this.initialBalanceLabel.TabIndex = 2;
@@ -90,36 +79,29 @@
             // lastNameLabel
             // 
             this.lastNameLabel.AutoSize = true;
-            this.lastNameLabel.Location = new System.Drawing.Point(240, 15);
+            this.lastNameLabel.Location = new System.Drawing.Point(260, 12);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(88, 20);
             this.lastNameLabel.TabIndex = 5;
             this.lastNameLabel.Text = "Last name:";
             // 
-            // accountNameTextBox
-            // 
-            this.accountNameTextBox.Location = new System.Drawing.Point(134, 44);
-            this.accountNameTextBox.Name = "accountNameTextBox";
-            this.accountNameTextBox.Size = new System.Drawing.Size(100, 26);
-            this.accountNameTextBox.TabIndex = 6;
-            // 
             // accountNumberTextBox
             // 
-            this.accountNumberTextBox.Location = new System.Drawing.Point(376, 44);
+            this.accountNumberTextBox.Location = new System.Drawing.Point(154, 44);
             this.accountNumberTextBox.Name = "accountNumberTextBox";
             this.accountNumberTextBox.Size = new System.Drawing.Size(100, 26);
             this.accountNumberTextBox.TabIndex = 7;
             // 
             // initialBalanceTextBox
             // 
-            this.initialBalanceTextBox.Location = new System.Drawing.Point(134, 76);
+            this.initialBalanceTextBox.Location = new System.Drawing.Point(376, 44);
             this.initialBalanceTextBox.Name = "initialBalanceTextBox";
             this.initialBalanceTextBox.Size = new System.Drawing.Size(100, 26);
             this.initialBalanceTextBox.TabIndex = 8;
             // 
             // firstNameTextBox
             // 
-            this.firstNameTextBox.Location = new System.Drawing.Point(134, 12);
+            this.firstNameTextBox.Location = new System.Drawing.Point(154, 9);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(100, 26);
             this.firstNameTextBox.TabIndex = 9;
@@ -263,12 +245,10 @@
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.initialBalanceTextBox);
             this.Controls.Add(this.accountNumberTextBox);
-            this.Controls.Add(this.accountNameTextBox);
             this.Controls.Add(this.lastNameLabel);
             this.Controls.Add(this.firstNameLabel);
             this.Controls.Add(this.initialBalanceLabel);
             this.Controls.Add(this.accountNumberLabel);
-            this.Controls.Add(this.accountNameLabel);
             this.Name = "BankForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -277,13 +257,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label accountNameLabel;
         private System.Windows.Forms.Label accountNumberLabel;
         private System.Windows.Forms.Label initialBalanceLabel;
         private System.Windows.Forms.Label firstNameLabel;
         private System.Windows.Forms.Label lastNameLabel;
-        private System.Windows.Forms.TextBox accountNameTextBox;
         private System.Windows.Forms.TextBox accountNumberTextBox;
         private System.Windows.Forms.TextBox initialBalanceTextBox;
         private System.Windows.Forms.TextBox firstNameTextBox;

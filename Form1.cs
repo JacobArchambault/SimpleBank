@@ -39,7 +39,6 @@ namespace SimpleBank
                 {
                     firstNameTextBox,
                     lastNameTextBox,
-                    accountNameTextBox,
                     accountNumberTextBox,
                     initialBalanceTextBox 
                 });
@@ -115,7 +114,6 @@ namespace SimpleBank
             {
                 FirstName = firstNameTextBox.Text,
                 LastName = lastNameTextBox.Text,
-                AccountName = accountNameTextBox.Text,
                 AccountNumber = int.Parse(accountNumberTextBox.Text),
                 AccountBalance = decimal.Parse(initialBalanceTextBox.Text)
             };
@@ -126,7 +124,6 @@ namespace SimpleBank
             // Check whether all inputs are valid by checking whether the firstname, last name, and account name fields are filled, ensuring that the account number textbox has a numeric input, and the initial balance textbox has an input that may be parsed as a decimal.
             return FieldIsFilled(firstNameTextBox, "First name") &&
             FieldIsFilled(lastNameTextBox, "Last name") &&
-            FieldIsFilled(accountNameTextBox, "Account name") &&
             InputIsNumeric(accountNumberTextBox, "Account number", "whole number") &&
             InputIsNumeric(initialBalanceTextBox, "Initial balance", "decimal");
         }

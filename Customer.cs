@@ -11,7 +11,7 @@ namespace SimpleBank
     {
         internal string FirstName { get; set; }
         internal string LastName { get; set; }
-        internal string AccountName { get; set; }
+        internal string AccountName => $"{FirstName} {LastName}";
         internal int AccountNumber { get; set; }
         internal decimal AccountBalance { get; set; }
         // adds the passed in amount to the customer's account balance.
