@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleBank
 {
+    // A Class containing information for a customer for a bank.
     internal class Customer
     {
         internal string FirstName { get; set; }
@@ -13,10 +14,12 @@ namespace SimpleBank
         internal string AccountName { get; set; }
         internal int AccountNumber { get; set; }
         internal decimal AccountBalance { get; set; }
+        // adds the passed in amount to the customer's account balance.
         internal void Deposit(decimal amount)
         {
             AccountBalance += amount;
         }
+        // Subtracts the passed in amount from the customer's account balance.
         internal void Withdraw(decimal amount)
         {
             AccountBalance -= amount;

@@ -26,12 +26,15 @@ namespace SimpleBank
         #endregion
 
         #region Event handlers
+        // If all textbox inputs are valid, then on clicking the 'Create Account' button, this method:
         private void button1_Click(object sender, EventArgs e)
         {
             warningLabel.Text = "";
             if (AllInputsAreValid()) 
             {
+                // creates a customer object;
                 _customer = CreateCustomer();
+                //locks the first name, last name, account name, account number, and initial balance textboxes;
                 LockAccountCreationControls(new List<TextBox>
                 {
                     firstNameTextBox,
@@ -40,27 +43,49 @@ namespace SimpleBank
                     accountNumberTextBox,
                     initialBalanceTextBox 
                 });
+                // enables and shows the controls associated with depositing and withdrawing funds;
                 EnableAndShowControls(new List<Control> { depositLabel, depositTextBox, depositButton, withdrawLabel, withdrawTextBox, withdrawalButton, currentBalanceLabel});
+                // assigns the decimal stored in the customer's AccountBalance property to the balance amount label's text, displaying it as a currency,
                 balanceAmountLabel.Text = _customer.AccountBalance.ToString("C", CultureInfo.CurrentCulture);
+                // and makes the balance amount label object visible.
                 balanceAmountLabel.Visible = true;
             };
+        }
+        private void depositButton_Click(object sender, EventArgs e)
+        {
+            // On clicking the deposit buton, deposit the amount from the deposit text box into the customer's balance...
+            _customer.Deposit(decimal.Parse(depositTextBox.Text));
+            // And display that balance on the balance amount label as a string
+            balanceAmountLabel.Text = _customer.AccountBalance.ToString("C", CultureInfo.CurrentCulture);
+        }
+
+        private void withdrawalButton_Click(object sender, EventArgs e)
+        {
+            // On clicking the withdraw buton, withdraw the amount from the withdraw text box from the customer's balance...
+            _customer.Withdraw(decimal.Parse(withdrawTextBox.Text));
+            // and display the new account balance
+            balanceAmountLabel.Text = _customer.AccountBalance.ToString("C", CultureInfo.CurrentCulture);
         }
         #endregion
 
         #region Helper methods
         private void EnableAndShowControls(List<Control> controls)
         {
+            // Set each control in a list of controls passed in to be both enabled and visible.
             controls.ForEach(c => {c.Enabled = true; c.Visible = true; });
         }
 
         private void LockAccountCreationControls(List<TextBox> textBoxes)
         {
+            // Set each textbox in a list of textboxes to readonly.
             textBoxes.ForEach(textBox => textBox.ReadOnly = true);
+            // disable the create account button.
             createAccountButton.Enabled = false;
         }
 
         private Customer CreateCustomer()
         {
+            // Create a new customer object, obtaining its first name, last name, account name, account number, and account balance fields from its associated textboxes.
             return new Customer
             {
                 FirstName = firstNameTextBox.Text,
@@ -73,6 +98,7 @@ namespace SimpleBank
 
         private bool AllInputsAreValid()
         {
+            // Check whether all inputs are valid by checking whether the firstname, last name, and account name fields are filled, ensuring that the account number textbox has a numeric input, and the initial balance textbox has an input that may be parsed as a decimal.
             return FieldIsFilled(firstNameTextBox, "First name") &&
             FieldIsFilled(lastNameTextBox, "Last name") &&
             FieldIsFilled(accountNameTextBox, "Account name") &&
@@ -81,6 +107,7 @@ namespace SimpleBank
         }
         private bool FieldIsFilled(TextBox textBox, string warningMessageSubject)
         {
+            // Check whether a given textbox field is filled by checking whether its text is null or whitespace. If it is, write a warning message with the passed in string parameter. Return true if the input is neither null nor whitespace, and false otherwise.
             bool isNullOrWhiteSpace = string.IsNullOrWhiteSpace(textBox.Text);
             if (isNullOrWhiteSpace)
             {
@@ -90,6 +117,7 @@ namespace SimpleBank
         }
         private bool InputIsNumeric(TextBox textBox, string warningMessageSubject, string desiredNumericType) 
         {
+            // check whether an input is the desired numeric type by trying to parse it. If it can be parse, return true. If it can't return false and write a message to the user.
             bool isDesiredNumericType = decimal.TryParse(textBox.Text, out _);
             if (!isDesiredNumericType)
             {
@@ -98,17 +126,5 @@ namespace SimpleBank
             return isDesiredNumericType;
         }
         #endregion
-
-        private void depositButton_Click(object sender, EventArgs e)
-        {
-            _customer.Deposit(decimal.Parse(depositTextBox.Text));
-            balanceAmountLabel.Text = _customer.AccountBalance.ToString("C", CultureInfo.CurrentCulture);
-        }
-
-        private void withdrawalButton_Click(object sender, EventArgs e)
-        {
-            _customer.Withdraw(decimal.Parse(withdrawTextBox.Text));
-            balanceAmountLabel.Text = _customer.AccountBalance.ToString("C", CultureInfo.CurrentCulture);
-        }
     }
 }
